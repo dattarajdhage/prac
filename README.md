@@ -1,5 +1,4 @@
-@@ -1,91 +1,464 @@
-JS  Experiment No  1
+JS  Experiment No  1   =area of triangle
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +21,7 @@ let radius= 15 ;
 let CircleArea = Math.PI * radius * radius;
 document.write(" Area of circle = " + CircleArea.toFixed(2));
 ----------------------------------------------------------------------------------------------------------------------------
-JS  Experiment no 2
+JS  Experiment no 2 = table
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,7 +38,37 @@ for( let i = 1 ;i<= 10 ;i++){
    document.write(num + " x " + i + " = "+ (num*i) + "<br>");
 }
 ----------------------------------------------------------------------------------------------------------------------------
-JS  Experiment no 4
+    exp 3 
+    // JavaScript Program: String Operations
+
+// Function to reverse a string
+function reverseString(str) {
+  return str.split('').reverse().join('');
+}
+
+// Function to replace characters in a string
+// Example: replace all occurrences of 'a' with 'x'
+function replaceCharacters(str, oldChar, newChar) {
+  return str.split(oldChar).join(newChar);
+}
+
+// Function to check if a string is palindrome
+function isPalindrome(str) {
+  const cleaned = str.toLowerCase().replace(/[^a-z0-9]/g, '');
+  const reversed = cleaned.split('').reverse().join('');
+  return cleaned === reversed;
+}
+
+// Example usage:
+const input = "madam";
+
+console.log("Original String:", input);
+console.log("Reversed String:", reverseString(input));
+console.log("After Replacing 'a' with 'x':", replaceCharacters(input, 'a', 'x'));
+console.log("Is Palindrome?", isPalindrome(input) ? "Yes" : "No");
+----------------------------------------------------------------------------------------------------------------------------
+
+JS  Experiment no 4 = compare string
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,7 +100,7 @@ document.write("First string comes after second.");
 
 ----------------------------------------------------------------------------------------------------------------------------
 
-JS   Experiment no 5
+JS   Experiment no 5 = timer
 
 
 <!DOCTYPE html>
@@ -97,7 +126,7 @@ document.getElementById("timer").innerHTML = "Time's up!";
 ----------------------------------------------------------------------------------------------------------------------------
 
 
-JS EXP6 
+JS EXP6 = array
 
 <!doctype html> 
 <html> 
@@ -146,7 +175,7 @@ function emptyArray() {
 ----------------------------------------------------------------------------------------------------------------------------
 
 
-JS  EXP7 
+JS  EXP7 = set operation
 
 <!doctype html> 
 <html> 
@@ -203,7 +232,7 @@ function symmetricDifference() {
 
 ----------------------------------------------------------------------------------------------------------------------------
 
- JS   EXP8 
+ JS   EXP8 = mouse event
 
 
 <!DOCTYPE html> 
@@ -244,7 +273,7 @@ this.style.border = "1px solid #ccc";
 
 ----------------------------------------------------------------------------------------------------------------------------
 
-JS Exp9 
+JS Exp9 = student info
 
 
 Exp9.html 
