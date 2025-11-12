@@ -41,31 +41,65 @@ for( let i = 1 ;i<= 10 ;i++){
     exp 3 
     // JavaScript Program: String Operations
 
-// Function to reverse a string
-function reverseString(str) {
-  return str.split('').reverse().join('');
-}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>String Operations in JavaScript</title>
+</head>
+<body>
 
-// Function to replace characters in a string
-// Example: replace all occurrences of 'a' with 'x'
-function replaceCharacters(str, oldChar, newChar) {
-  return str.split(oldChar).join(newChar);
-}
+  <h2>JavaScript String Operations</h2>
 
-// Function to check if a string is palindrome
-function isPalindrome(str) {
-  const cleaned = str.toLowerCase().replace(/[^a-z0-9]/g, '');
-  const reversed = cleaned.split('').reverse().join('');
-  return cleaned === reversed;
-}
+  <label>Enter a string:</label><br>
+  <input type="text" id="inputString" placeholder="Enter text here"><br><br>
 
-// Example usage:
-const input = "madam";
+  <label>Replace character:</label><br>
+  <input type="text" id="oldChar" maxlength="1" placeholder="Old char">
+  <input type="text" id="newChar" maxlength="1" placeholder="New char"><br><br>
 
-console.log("Original String:", input);
-console.log("Reversed String:", reverseString(input));
-console.log("After Replacing 'a' with 'x':", replaceCharacters(input, 'a', 'x'));
-console.log("Is Palindrome?", isPalindrome(input) ? "Yes" : "No");
+  <button onclick="reverseStr()">Reverse String</button>
+  <button onclick="replaceChar()">Replace Character</button>
+  <button onclick="checkPalindrome()">Check Palindrome</button>
+
+  <div id="result"></div>
+
+  <script>
+    // Function to reverse a string
+    function reverseStr() {
+      const str = document.getElementById("inputString").value;
+      const reversed = str.split('').reverse().join('');
+      document.getElementById("result").innerText = "Reversed String: " + reversed;
+    }
+
+    // Function to replace characters in a string
+    function replaceChar() {
+      const str = document.getElementById("inputString").value;
+      const oldChar = document.getElementById("oldChar").value;
+      const newChar = document.getElementById("newChar").value;
+      if (oldChar === "") {
+        document.getElementById("result").innerText = "Please enter a character to replace.";
+        return;
+      }
+      const replaced = str.split(oldChar).join(newChar);
+      document.getElementById("result").innerText = 
+        "After replacing '" + oldChar + "' with '" + newChar + "': " + replaced;
+    }
+
+    // Function to check if string is palindrome
+    function checkPalindrome() {
+      const str = document.getElementById("inputString").value;
+      const cleaned = str.toLowerCase().replace(/[^a-z0-9]/g, '');
+      const reversed = cleaned.split('').reverse().join('');
+      const isPal = cleaned === reversed;
+      document.getElementById("result").innerText = 
+        isPal ? "It is a Palindrome!" : "Not a Palindrome.";
+    }
+  </script>
+
+</body>
+</html>
+
+  
 ----------------------------------------------------------------------------------------------------------------------------
 
 JS  Experiment no 4 = compare string
