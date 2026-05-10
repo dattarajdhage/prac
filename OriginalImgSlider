@@ -46,14 +46,11 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
-    // creating object of ViewPager
     ViewPager mViewPager;
 
-    // images array
     int[] images = {R.drawable.sample_1, R.drawable.sample_2, R.drawable.sample_3,R.drawable.sample_4,R.drawable.sample_5
             ,R.drawable.sample_6,R.drawable.sample_7,R.drawable.sample_8,R.drawable.sample_9,R.drawable.sample_10};
 
-    // Creating Object of ViewPagerAdapter
     ViewPagerAdapter mViewPagerAdapter;
 
 
@@ -62,13 +59,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Initializing the ViewPager Object
         mViewPager = (ViewPager)findViewById(R.id.viewPagerMain);
 
-        // Initializing the ViewPagerAdapter
+       
         mViewPagerAdapter = new ViewPagerAdapter(MainActivity.this, images);
 
-        // Adding the Adapter to the ViewPager
         mViewPager.setAdapter(mViewPagerAdapter);
     }
 }
@@ -89,17 +84,15 @@ import java.util.Objects;
 
 class ViewPagerAdapter extends PagerAdapter {
 
-    // Context object
+    
     Context context;
 
-    // Array of images
     int[] images;
 
-    // Layout Inflater
     LayoutInflater mLayoutInflater;
 
 
-    // Viewpager Constructor
+   
     public ViewPagerAdapter(Context context, int[] images) {
         this.context = context;
         this.images = images;
@@ -108,7 +101,7 @@ class ViewPagerAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        // return the number of images
+       
         return images.length;
     }
 
@@ -120,16 +113,14 @@ class ViewPagerAdapter extends PagerAdapter {
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, final int position) {
-        // inflating the item.xml
+        
         View itemView = mLayoutInflater.inflate(R.layout.item, container, false);
 
-        // referencing the image view from the item.xml file
         ImageView imageView = (ImageView) itemView.findViewById(R.id.imageViewMain);
 
-        // setting the image in the imageView
         imageView.setImageResource(images[position]);
 
-        // Adding the View
+     
         Objects.requireNonNull(container).addView(itemView);
 
         return itemView;
