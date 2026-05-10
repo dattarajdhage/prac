@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".MainActivity">
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPagerMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>
+
+					res > layout > new > layout resource file 
+
+						==============================item xml file==============================
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- image viwer to view the images -->
+    <ImageView
+        android:id="@+id/imageViewMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>
+
+
+										main java file 
+
+
+package com.example.myapplication22;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+import android.os.Bundle;
+
+public class MainActivity extends AppCompatActivity {
+
+    // creating object of ViewPager
+    ViewPager mViewPager;
+
+    // images array
+    int[] images = {R.drawable.sample_1, R.drawable.sample_2, R.drawable.sample_3,R.drawable.sample_4,R.drawable.sample_5
+            ,R.drawable.sample_6,R.drawable.sample_7,R.drawable.sample_8,R.drawable.sample_9,R.drawable.sample_10};
+
+    // Creating Object of ViewPagerAdapter
+    ViewPagerAdapter mViewPagerAdapter;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        // Initializing the ViewPager Object
+        mViewPager = (ViewPager)findViewById(R.id.viewPagerMain);
+
+        // Initializing the ViewPagerAdapter
+        mViewPagerAdapter = new ViewPagerAdapter(MainActivity.this, images);
+
+        // Adding the Adapter to the ViewPager
+        mViewPager.setAdapter(mViewPagerAdapter);
+    }
+}
+
+.com > new > class
+=========================================ViewPagerAdapter================================
+package com.example.myapplication22;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.PagerAdapter;
+import java.util.Objects;
+
+class ViewPagerAdapter extends PagerAdapter {
+
+    // Context object
+    Context context;
+
+    // Array of images
+    int[] images;
+
+    // Layout Inflater
+    LayoutInflater mLayoutInflater;
+
+
+    // Viewpager Constructor
+    public ViewPagerAdapter(Context context, int[] images) {
+        this.context = context;
+        this.images = images;
+        mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
+
+    @Override
+    public int getCount() {
+        // return the number of images
+        return images.length;
+    }
+
+    @Override
+    public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
+        return view == ((LinearLayout) object);
+    }
+
+    @NonNull
+    @Override
+    public Object instantiateItem(@NonNull ViewGroup container, final int position) {
+        // inflating the item.xml
+        View itemView = mLayoutInflater.inflate(R.layout.item, container, false);
+
+        // referencing the image view from the item.xml file
+        ImageView imageView = (ImageView) itemView.findViewById(R.id.imageViewMain);
+
+        // setting the image in the imageView
+        imageView.setImageResource(images[position]);
+
+        // Adding the View
+        Objects.requireNonNull(container).addView(itemView);
+
+        return itemView;
+    }
+
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+
+        container.removeView((LinearLayout) object);
+    }
+}
