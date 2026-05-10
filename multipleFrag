@@ -1,0 +1,96 @@
+MainActivity.java file
+
+package com.example.fragmentexample;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+public class MainActivity extends AppCompatActivity {
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main);
+ }
+}
+
+Fragemnt1.java file
+
+package com.example.fragmentexample;
+import android.app.Fragment;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+public class Fragment1 extends Fragment{
+ public View onCreateView(LayoutInflater inflater, ViewGroup container,
+ Bundle savedInstanceState) {
+// TODO Auto-generated method stub
+ return inflater.inflate(R.layout.fragment1,container, false);
+ }
+}
+
+Fragemnt2.java file
+
+package com.example.fragmentexample;
+import android.app.Fragment;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+public class Fragment2 extends Fragment {
+ public View onCreateView(LayoutInflater inflater, ViewGroup container,
+ Bundle savedInstanceState) {
+// TODO Auto-generated method stub
+ return inflater.inflate(R.layout.fragment2,container, false);
+ }
+}
+
+Activity_main.xml file
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ android:layout_width="fill_parent"
+ android:layout_height="fill_parent" >
+ <fragment
+ android:id="@+id/fragment2"
+ android:name="com.example.fragmentexample.Fragment2"
+ android:layout_width="0px"
+ android:layout_height="match_parent"
+ android:layout_weight="1" />
+ <fragment
+ android:id="@+id/fragment1"
+ android:name="com.example.fragmentexample.Fragment1"
+ android:layout_width="0px"
+ android:layout_height="match_parent"
+ android:layout_weight="1" />
+</LinearLayout>
+
+Fragment1.xml file
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:orientation="vertical"
+ android:background="#FF0000" >
+ <TextView
+ android:id="@+id/textView1"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="fragment frist"
+ android:textAppearance="?android:attr/textAppearanceLarge" />
+</LinearLayout>
+
+Fragment2.xml file
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:orientation="vertical"
+ android:background="#ADD8E6"
+ >
+ <TextView
+ android:id="@+id/textView1"
+ android:layout_width="wrap_content"
+ android:layout_height="wrap_content"
+ android:text="Second Fragment"
+ android:textAppearance="?android:attr/textAppearanceLarge" />
+</LinearLayout>
